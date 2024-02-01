@@ -38,28 +38,33 @@ const tileSize = 8;
 function update() {
     renderMap();
 }
-// render
-const SCALE = 2;
+// render 
+// test stuff idk 
+const SCALE = 3;
 function renderMap() { // map param.
     ctx.imageSmoothingEnabled = false;
 
-    for (let row = 0; row < mapImage.width / tileSize; row++) {
-        for (let col = 0; col < mapImage.height / tileSize; col++) {
+
+    // Draw Map with them dots
+    for (let row = 0; row < 31; row++) { 
+        for (let col = 0; col < 28; col++) { 
            // const currentTile = map[row][col];
             const srcImageX = col * tileSize;
             const srcImageY = row * tileSize;
             // Draw Tile
-            // drawImage(image, sx, sy, sW, sH, dx, dy, dW, dH)
-            ctx.drawImage(mapImage, srcImageX, srcImageY, tileSize, tileSize, col * (tileSize * SCALE), row * (tileSize * SCALE), tileSize * SCALE, tileSize * SCALE);
+            ctx.drawImage(mapImage, srcImageX, srcImageY, tileSize, tileSize, // image, sx, sy, sW, sH
+                            col * (tileSize * SCALE), row * (tileSize * SCALE), tileSize * SCALE, tileSize * SCALE); // dx, dy, dW, dH
         }
     }
-    //const srcImageX = 0 * tileSize;
-    // const srcImageY = 0 * tileSize;
-    // ctx.drawImage(mapImage, srcImageX, srcImageY, tileSize, tileSize, 0 * tileSize, 0 * tileSize, tileSize * SCALE, tileSize * SCALE);
 
-    // const srcImageX2 = 1 * tileSize;
-    // const srcImageY2 = 0 * tileSize;
-    // ctx.drawImage(mapImage, srcImageX2, srcImageY2, tileSize, tileSize, 1 * (tileSize * SCALE), 0 * (tileSize * SCALE), tileSize * SCALE, tileSize * SCALE);
+    // Draw Pac-Man
+    // ToDo - make constants for pacman width and height (16x16)
+    ctx.drawImage(mapImage, 57 * tileSize, 0, tileSize * 2, tileSize * 2,
+                            200, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
+    ctx.drawImage(mapImage, 59 * tileSize, 0, tileSize * 2, tileSize * 2,
+        300, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
+    ctx.drawImage(mapImage, 61 * tileSize, 0, tileSize * 2, tileSize * 2,
+        400, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
 
 }
 
