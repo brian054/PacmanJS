@@ -41,14 +41,27 @@ function update() {
 // render 
 // test stuff idk 
 const SCALE = 3;
+// This is the game board size
+// Need to add a separate top and bottom section for score 
+// and lives counter and all that good stuff
+/*
+    OK WAIT
+    Damn the whole screen is 28 cols x 36 rows
+
+*/
+const rows = 31; // 31 for board, 36 for whole screen
+const cols = 28;
 function renderMap() { // map param.
     ctx.imageSmoothingEnabled = false;
 
+    // Draw Top of Screen
 
     // Draw Map with them dots
-    for (let row = 0; row < 31; row++) { 
-        for (let col = 0; col < 28; col++) { 
+    for (let row = 0; row < rows; row++) { // 31
+        for (let col = 0; col < cols; col++) { 
            // const currentTile = map[row][col];
+            console.log("Row: ", row);
+            console.log("Col: ", col);
             const srcImageX = col * tileSize;
             const srcImageY = row * tileSize;
             // Draw Tile
@@ -57,14 +70,18 @@ function renderMap() { // map param.
         }
     }
 
+    // Draw Bottom of Screeen
+
+
     // Draw Pac-Man
     // ToDo - make constants for pacman width and height (16x16)
+    // drawImage(image, sx, sy, sW, sH, dx, dy, dW, dH)
     ctx.drawImage(mapImage, 57 * tileSize, 0, tileSize * 2, tileSize * 2,
                             200, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
     ctx.drawImage(mapImage, 59 * tileSize, 0, tileSize * 2, tileSize * 2,
         300, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
     ctx.drawImage(mapImage, 61 * tileSize, 0, tileSize * 2, tileSize * 2,
-        400, 400, tileSize * SCALE * 2, tileSize * SCALE * 2);
+         ((cols / 2) - 1) * tileSize * SCALE, ((rows / 2) + 7) * tileSize * SCALE, tileSize * SCALE * 2, tileSize * SCALE * 2);
 
 }
 
